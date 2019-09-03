@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学习积分</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script id="pageTpl" type="text/x-template">
+        <div class="pointRoot">
+            <mt-header title="学习积分">
+                <div slot="left">
+                    <mt-button icon="back"></mt-button>
+                </div>
+                <mt-button slot="right">积分明细</mt-button>
+            </mt-header>
+            <div class="pointRoot-avatar">
+                <div class="avatar-main">
+                    <div class="main-txt">成长总积分</div>
+                    <div class="main-point">3</div>
+                    <div class="main-btn">去兑换</div>
+                </div>
+                <div class="avatar-to">积分说明</div>
+            </div>
+            <div class="pointRoot-tip">
+                <div class="tip-icon"></div>
+                <div class="tip-txt">积分试运行期间,积分规则将会适时调整,带来不便敬请谅解</div>
+            </div>
+
+            <div class="pointRoot-listTitle">
+                <div class="listTitle-big">积分规则</div>
+                <div class="listTitle-small">今日已累计1分</div>
+            </div>
+            <div class="pointRoot-termList">
+                <point-term v-for="(item,index) in terms" :item="item" @to="complete(item)"></point-term>
+            </div>
+        </div>
+
+   </script>
+
+    <script id="termTpl" type="text/x-template">
+        <div class="term bd-top">
+            <div class="term-left">
+                <div class="term-title">{{item.title}}</div>
+                <div class="term-desc">{{item.desc}}</div>
+                <div class="term-progress">
+                    <mt-progress :bar-height="10" :value="20">
+                        <div slot="end">已获{{item.currentPoint}}分/每日上限{{item.amountPoint}}分</div>
+                    </mt-progress>
+                </div>
+            </div>
+            <div class="term-right">
+                <button class="term-btn btn-look" @click="to">去看看</button>
+            </div>
+        </div>
+    </script>
+
+    <script id="pointRuleTpl" type="text/x-template">
+        <div class="pointRule">
+               <mt-header title="积分说明">
+                   <div slot="left">
+                       <mt-button icon="back"></mt-button>
+                   </div>
+               </mt-header>
+               <div class="rule-tip">
+                    积分试运行期间,积分规则将会适时调整,带来不便敬请谅解
+               </div>
+               <div class="desc">
+                    <p class="desc-item">
+                        学习积分是学习平台对用户
+                    </p>
+                    <p class="desc-item">
+                        严禁利用刷分软件
+                    </p>
+                    <dl class="desc-item">
+                        <dt>
+                            平台规则如下:
+                        </dt>
+                        <dd class="item-dl">
+                            <div class="title">
+                                 登录
+                            </div>
+                            <div class="ruleText">每日登录积1分</div>
+                        </dd>
+                    </dl>
+               </div>
+        </div>
+    </script>
+
+    <script id="pointHistoryTpl" type="text/x-template">
+
+        <div class="pointHistory">
+
+                <mt-header title="积分明细">
+                    <div slot="left">
+                        <mt-button icon="back"></mt-button>
+                    </div>
+                </mt-header>
+                <div ref="pointHistoryScroll" class="pointHistory-swipe">
+                    <ul ref="pointHistoryUl" class="pointHistoryUl">
+                        <li :class="{today:item.time==='今天'}" class="pointHistoryLi" v-for="item in timeList">
+                            <div class="time">{{item.time}}</div>
+                            <div class="bottom">
+                                <div class="bottom-num">3分</div>
+                                <div class="bottom-bar"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pointHistory-title">
+                     <div class="title-left">当日积分:3</div>
+                     <div class="title-right">{{today}}</div>
+                </div>
+
+                <div class="pointHistory-list">
+                    <div class="list-sideLine"></div>
+                    <div class="list-item">
+                         <div class="item-top">
+                              <div class="item-dot"></div>
+                              <div class="item-time">13:54</div>
+                         </div>
+                         <div class="item-bottom">
+                             <div class="item-txt">阅读文章</div>
+                             <div class="item-point">
+                                 <span class="point">+1</span>
+                                 分
+                             </div>
+                         </div>
+                    </div>
+                        <div class="list-item">
+                            <div class="item-top">
+                                <div class="item-dot"></div>
+                                <div class="item-time">13:54</div>
+                            </div>
+                            <div class="item-bottom">
+                                <div class="item-txt">阅读文章</div>
+                                <div class="item-point">
+                                    <span class="point">+1</span>
+                                    分
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+        </div>
+
+    </script>
+</body>
+
+</html>
