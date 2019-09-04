@@ -74,6 +74,7 @@ var app = new Vue({
     },
     complete: function(item) {
       console.log(item)
-    }
+    },
+    back: function() {}
   }
 })

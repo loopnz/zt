@@ -15,7 +15,7 @@
         <div class="pointRoot">
             <mt-header title="学习积分">
                 <div slot="left">
-                    <mt-button icon="back"></mt-button>
+                    <mt-button @click="back" icon="back"></mt-button>
                 </div>
                 <mt-button slot="right">积分明细</mt-button>
             </mt-header>
@@ -64,7 +64,7 @@
         <div class="pointRule">
                <mt-header title="积分说明">
                    <div slot="left">
-                       <mt-button icon="back"></mt-button>
+                       <mt-button @click="back" icon="back"></mt-button>
                    </div>
                </mt-header>
                <div class="rule-tip">
@@ -81,11 +81,11 @@
                         <dt>
                             平台规则如下:
                         </dt>
-                        <dd class="item-dl">
+                        <dd v-for="item in terms" class="item-dl">
                             <div class="title">
-                                 登录
+                                 {{item.title}}
                             </div>
-                            <div class="ruleText">每日登录积1分</div>
+                            <div class="ruleText">{{item.desc}}</div>
                         </dd>
                     </dl>
                </div>
@@ -98,7 +98,7 @@
 
                 <mt-header title="积分明细">
                     <div slot="left">
-                        <mt-button icon="back"></mt-button>
+                        <mt-button @click="back" icon="back"></mt-button>
                     </div>
                 </mt-header>
                 <div ref="pointHistoryScroll" class="pointHistory-swipe">

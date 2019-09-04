@@ -10,18 +10,27 @@ var app = new Vue({
   data: {
     terms: [
       {
-        title: '登录',
+        title: '每日签到',
         status: '已完成',
         desc: '1分/每日首次登录',
         amountPoint: 6,
         currentPoint: 0,
         percent: 0
+      },
+      {
+        title: '阅读文章',
+        desc: '阅读文章'
+      },
+      {
+        title: '观看视频',
+        desc: '观看视频'
       }
     ]
   },
   methods: {
     complete: function(item) {
       console.log(item)
-    }
+    },
+    back: function() {}
   }
 })
