@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
-
+const SentryWebpackPlugin = require('@sentry/webpack-plugin')
+const SentryPlugin = require('webpack-sentry-plugin')
 /*
  * SplitChunksPlugin is enabled by default and replaced
  * deprecated CommonsChunkPlugin. It automatically identifies modules which
@@ -30,7 +31,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 let pages = ['pageOne', 'pointIndex', 'pointRule', 'pointHistory']
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
 
   entry: {
     pageOne: './src/pageOne.js',
@@ -58,6 +59,13 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
       ignoreOrder: false // Enable to remove warnings about conflicting order
+    }),
+    new SentryWebpackPlugin({
+      include: '.',
+      release: 'jstest@0.0.9',
+      ignoreFile: '.sentrycliignore',
+      ignore: ['node_modules', 'webpack.config.js'],
+      configFile: 'sentry.properties'
     })
   ],
   module: {

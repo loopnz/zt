@@ -6,16 +6,15 @@ import * as Sentry from '@sentry/browser'
 import { init, captureMessage } from '@sentry/browser'
 
 init({
-  dsn: 'http://0753074379354762b0cadf1bbf88a050@192.168.99.100:9000/2'
+  release: 'jstest@0.0.9',
+  dsn: 'http://70ad4b5a5bc2411398408e44b9d9a8b7@192.168.99.100:9000/3'
   // ...
 })
 
 class Button extends Component {
   componentDidCatch(error, errorInfo) {
     Sentry.withScope(scope => {
-      Object.keys(errorInfo).forEach(key => {
-        scope.setExtra(key, errorInfo[key])
-      })
+      scope.setExtras(errorInfo)
       Sentry.captureException(error)
     })
   }

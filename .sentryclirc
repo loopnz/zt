@@ -1,0 +1,8 @@
+[auth]
+token = ec67593fc25f4313ac3d1fe06885795797cd68524ff647c5be2194ffb51e9954
+[defaults]
+url = http://192.168.99.100:9000
+org = sentry
+project = jstest
+[log]
+level = warning
