@@ -31,7 +31,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 let pages = ['pageOne', 'pointIndex', 'pointRule', 'pointHistory']
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
 
   entry: {
     pageOne: './src/pageOne.js',
@@ -59,14 +59,14 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
       ignoreOrder: false // Enable to remove warnings about conflicting order
-    }),
-    new SentryWebpackPlugin({
-      include: '.',
-      release: 'jstest@0.0.9',
-      ignoreFile: '.sentrycliignore',
-      ignore: ['node_modules', 'webpack.config.js'],
-      configFile: 'sentry.properties'
     })
+    // new SentryWebpackPlugin({
+    //   include: '.',
+    //   release: 'jstest@0.0.9',
+    //   ignoreFile: '.sentrycliignore',
+    //   ignore: ['node_modules', 'webpack.config.js'],
+    //   configFile: 'sentry.properties'
+    // })
   ],
   module: {
     rules: [

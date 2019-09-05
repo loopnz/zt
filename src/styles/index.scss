@@ -151,3 +151,54 @@
     }
   }
 }
+
+@mixin thinBorder($directionMaps: bottom, $color: #ccc, $position: after) {
+  // 是否只有一个方向
+  $isOnlyOneDir: string==type-of($directionMaps);
+  @if ($isOnlyOneDir) {
+    $directionMaps: ($directionMaps);
+  }
+  @each $directionMap in $directionMaps {
+    border-#{$directionMap}: 1px solid $color;
+  }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    & {
+      position: relative;
+      // 删除1像素密度比下的边框
+      @each $directionMap in $directionMaps {
+        border-#{$directionMap}: none;
+      }
+    }
+    &:#{$position} {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+      box-sizing: border-box;
+      padding: 1px;
+      transform-origin: 0 0;
+      pointer-events: none;
+      border: 0 solid $color;
+      @each $directionMap in $directionMaps {
+        border-#{$directionMap}-width: 1px;
+      }
+    }
+  }
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    &:#{$position} {
+      width: 300%;
+      height: 300%;
+      transform: scale(0.33);
+    }
+  }
+}
+
+@each $dir in (top, right, bottom, left) {
+  .border-#{$dir}-#{1}px {
+    @include thinBorder($dir);
+  }
+}
