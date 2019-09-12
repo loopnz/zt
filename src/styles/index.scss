@@ -122,8 +122,7 @@
     }
     .mt-progress-progress {
       background: #53ab3a;
-      border-top-left-radius: 16px;
-      border-bottom-left-radius: 16px;
+      border-radius: 16px;
     }
     .term-left {
       position: relative;
@@ -145,6 +144,7 @@
       background: #f1f4f4;
       padding: 10px 15px;
       border: none;
+      white-space: nowrap;
     }
     .btn-look {
       background: #fdf8ef;
