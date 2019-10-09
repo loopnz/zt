@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 const SentryPlugin = require('webpack-sentry-plugin')
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 /*
  * SplitChunksPlugin is enabled by default and replaced
  * deprecated CommonsChunkPlugin. It automatically identifies modules which
@@ -54,6 +56,10 @@ module.exports = {
     modules: [path.resolve(__dirname, 'node_modules')]
   },
   plugins: [
+    
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns:['zt/*']
+    }),
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
@@ -103,7 +109,16 @@ module.exports = {
             ]
           ]
         }
-      }
+      },
+      {
+        test:/\.(jpg|png|gif)$/,
+        use:[{
+                loader:"url-loader",
+                options:{
+                    limit:10000
+                }
+            }]
+    }
     ]
   },
 

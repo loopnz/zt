@@ -13,8 +13,8 @@
     <div id="app" class="border-bottom-1px"></div>
 
     <script id="pageTpl" type="text/x-template">
-        <div class="pointRoot">
-            <mt-header title="学习积分">
+        <div class="pointRoot ignore-root">
+            <mt-header fixed title="学习积分">
                 <div slot="left">
                     <mt-button @click="back" icon="back"></mt-button>
                 </div>
@@ -22,9 +22,8 @@
             </mt-header>
             <div class="pointRoot-avatar">
                 <div class="avatar-main">
-                    <div class="main-txt">成长总积分</div>
                     <div class="main-point">3</div>
-                    <div class="main-btn">去兑换</div>
+                    <div @click="show" class="main-btn">去兑换</div>
                 </div>
                 <div class="avatar-to">积分说明</div>
             </div>
@@ -33,26 +32,44 @@
                 <div class="tip-txt">积分试运行期间,积分规则将会适时调整,带来不便敬请谅解</div>
             </div>
 
-            <div class="pointRoot-listTitle">
+            <div class="pointRoot-listTitle ">
                 <div class="listTitle-big">积分规则</div>
-                <div class="listTitle-small">今日已累计1分</div>
+                <div class="listTitle-small">今日已累计
+                    <span class="small-numtxt">2</span>
+                    <span class="small-txt">分</span>
+                </div>
             </div>
             <div class="pointRoot-termList">
                 <point-term v-for="(item,index) in terms" :item="item" @to="complete(item)"></point-term>
             </div>
+
+            <mt-popup
+            v-model="popupVisible"
+            popup-transition="popup-fade">
+                <div class="exchange">
+                    <dl class="echange-content">
+                        <dt>兑换说明</dt>
+                        <dd>1、多少积分兑换隐患积分</dd>
+                    </dl>
+                    <div class="btn-box">
+                        <mt-button @click="exchange" size="small" type="primary">立刻兑换</mt-button>
+                    </div>
+                </div>
+            </mt-popup>
         </div>
 
    </script>
 
     <script id="termTpl" type="text/x-template">
-        <div class="term bd-top">
+        <div class="term border-top-1px">
             <div class="term-left">
                 <div class="term-title">{{item.title}}</div>
                 <div class="term-desc">{{item.desc}}</div>
                 <div class="term-progress">
-                    <mt-progress :bar-height="10" :value="20">
-                        <div slot="end">已获{{item.currentPoint}}分/每日上限{{item.amountPoint}}分</div>
+                    <mt-progress :bar-height="10" :value="0">
+                      
                     </mt-progress>
+                    <div class="progress-txt">已获{{item.currentPoint}}分/每日上限{{item.amountPoint}}分</div>
                 </div>
             </div>
             <div class="term-right">
@@ -73,14 +90,17 @@
                </div>
                <div class="desc">
                     <p class="desc-item">
-                        学习积分是学习平台对用户
+                        学习积分是"泰安"学习平台对用户通过本平台进行学习的行为分析数据,也是兑换奖励的依据。
                     </p>
+                    <p class="desc-item">本学习积分规则设计判定的技术开发和知识产权由"泰安"学习平台所有。</p>
                     <p class="desc-item">
-                        严禁利用刷分软件
+                        <span class="bold"> 严禁利用刷分软件等谋取利益。</span>一旦发现，将会同网信管理部门、公安机关依法进行严厉打击。
+                        用户一旦被技术手段检测到有使用刷分软件的行为,将被封禁。目前,已对使用刷分软件的部分用户进行了封禁处理。
                     </p>
+
                     <dl class="desc-item">
                         <dt>
-                            平台规则如下:
+                            泰安学习平台将对以下学习行为进行积分，规则如下:
                         </dt>
                         <dd v-for="item in terms" class="item-dl">
                             <div class="title">
@@ -114,7 +134,9 @@
                     </ul>
                 </div>
                 <div class="pointHistory-title">
-                     <div class="title-left">当日积分:3</div>
+                     <div class="title-left">当日积分:
+                         <span>3</span>
+                     </div>
                      <div class="title-right">{{today}}</div>
                 </div>
 

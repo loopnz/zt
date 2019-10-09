@@ -9,7 +9,6 @@
 .bd-top:before {
   content: '  ';
   position: absolute;
-  z-index: -1;
   left: 0;
   top: 0;
   width: 200%;
@@ -22,7 +21,12 @@
   box-sizing: border-box;
 }
 
+.ignore-root{
+  padding-top: 40px;
+}
 .pointRoot {
+  background: #fff;
+ 
   .mint-header {
     background: #fff;
     color: #666;
@@ -32,15 +36,16 @@
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
     color: #fff;
-    background: #53ab3a;
-    height: 500px;
+    background: #50a60e;
+    height: 375px;
 
     .avatar-main {
       display: flex;
+      margin-top: 67px;
       flex-direction: column;
       align-items: center;
+      line-height: 1;
       .main-txt {
         font-size: 48px;
       }
@@ -48,19 +53,26 @@
         font-size: 100px;
       }
       .main-btn {
-        padding: 5px 20px;
+        width: 172px;
+        height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: #53ab3a;
         background: #fff;
-        border-radius: 20px;
+        font-size: 34px;
+        margin-top: 32px;
+        border-radius: 10px;
+        
       }
     }
     .avatar-to {
       position: absolute;
       right: 0;
       top: 45px;
-      background: #ff801a;
-      color: #fff;
-      font-size: 48px;
+      background: #f3e817;
+      color: #49a402;
+      font-size: 32px;
       padding: 10px 10px 10px 30px;
       border-top-left-radius: 40px;
       border-bottom-left-radius: 40px;
@@ -68,57 +80,95 @@
   }
   .pointRoot-tip {
     position: relative;
-    margin: -50px 51px 0 51px;
+    margin: -65px 32px 0 32px;
     border-radius: 20px;
     background: #fff;
     color: #666;
-    font-size: 34px;
-    height: 100px;
+    font-size: 32px;
+    height: 131px;
     display: flex;
     align-items: center;
     box-sizing: border-box;
     padding: 0 20px;
     box-shadow: 0 0 10px #ddd;
+    .tip-icon{
+      width: 56px;
+      height: 56px;
+      display: inline-block;
+      background: url(../imgs/lnotice.png)no-repeat;
+      background-size: 100%;
+    }
     .tip-txt {
-      margin-left: 30px;
+      margin-left: 16px;
     }
   }
   .pointRoot-listTitle {
     position: relative;
-    height: 140px;
     box-sizing: border-box;
-    padding: 0 51px;
+    margin: 0 32px;
+    padding-top: 60px;
+    padding-bottom: 42px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .listTitle-big {
       font-size: 46px;
       font-weight: bold;
+      border-left: 10px solid #4aa503;
+      padding-left: 32px;
     }
     .listTitle-small {
       font-size: 34px;
+
+      .small-numtxt{
+         color: #47a504;
+         font-size: 38px;
+      }
+      .small-txt{
+        color: #47a504;
+      }
     }
   }
   .pointRoot-termList {
     box-sizing: border-box;
-    padding: 0 51px;
+    padding: 0 45px;
     .term {
       height: 278px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+    .term-progress{
+      align-items: center;
+      display: flex;
+      margin-top: 24px;
+    }
     .mt-progress {
       align-items: center;
-      margin-top: 26px;
-      font-size: 32px;
+      font-size: 22px;
+      color: #999;
+      height: 16px;
+      width: 185px;
+      display: inline-block;
+    }
+    .progress-txt{
+      color: #999;
+      display: inline-block;
+      font-size: 22px;
+      margin-left: 24px;
     }
     .mt-progress-content {
-      width: 170px;
+      width: 185px;
       margin-right: 20px;
+      height: 16px;
     }
     .mt-progress-runway {
+      height: 16px!important;
       border-radius: 16px;
+      width: 185px;
+    }
+    .mt-progress-progress{
+      height: 16px!important;
     }
     .mt-progress-progress {
       background: #53ab3a;
@@ -128,28 +178,68 @@
       position: relative;
     }
     .term-title {
-      font-size: 40px;
+      font-size: 36px;
+      font-weight: bold;
     }
     .term-desc {
       margin-top: 26px;
       line-height: 1;
-      font-size: 36px;
+      font-size: 28px;
+      color: #999;
     }
     .term-right {
       position: relative;
     }
     .term-btn {
-      font-size: 36px;
+      font-size: 34px;
       color: #666;
-      background: #f1f4f4;
-      padding: 10px 15px;
+      background: #f0f3f3;
+      width: 160px;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: none;
       white-space: nowrap;
+      border-radius: 10px;
+      line-height: 1;
     }
     .btn-look {
-      background: #fdf8ef;
+      background: #03b502;
+      color: #fff;
     }
   }
+  .mint-popup{
+    width: 80%;
+    border-radius: 6px;
+
+  }
+  .exchange{
+    padding: 30px;
+    dt{
+      text-align: center;
+      font-weight: bold;
+      font-size: 50px;
+      color: #333;
+    }
+    dd{
+      margin: 20px 0;
+      color: #999;
+    }
+
+    .btn-box{
+      text-align: center;
+      margin-top: 60px;
+    }
+    .exchange-btn{
+      border: none;
+    }
+    .mint-button--primary{
+      background: #53ab3a;
+      width: 80%;
+    }
+  }
+
 }
 
 @mixin thinBorder($directionMaps: bottom, $color: #ccc, $position: after) {

@@ -32,11 +32,11 @@ var app = new Vue({
       this.addZero(month) +
       '.' +
       this.addZero(today)
-    for (var i = 0; i < 33; i++) {
+    for (var i = 0; i < 18; i++) {
       var obj = {}
       if (i === 0) {
         obj.time = '今天'
-      } else if (i < 30) {
+      } else if (i < 15) {
         var prevousDay = new Date(
           new Date().getTime() - 24 * 60 * 60 * 1000 * i
         )
@@ -57,7 +57,7 @@ var app = new Vue({
       scrollX: true,
       scrollY: false
     })
-    scroll.scrollToElement(child[32], 500)
+    scroll.scrollToElement(child[17], 500)
   },
   methods: {
     addZero: function(str) {
