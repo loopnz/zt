@@ -52,7 +52,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "schema-utils": "^2.0.1",
-    "sequelize": "^5.13.1",
+    "sequelize": "^5.15.1",
     "sequelize-cli": "^5.5.0",
     "vue": "^2.6.10"
   },
