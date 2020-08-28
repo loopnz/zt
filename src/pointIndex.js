@@ -30,6 +30,7 @@ var app = new Vue({
     title: '学习积分首页'
   },
   data: {
+    popupVisible:false,
     terms: [
       {
         title: '登录',
@@ -45,6 +46,13 @@ var app = new Vue({
     complete: function(item) {
       console.log(item)
     },
-    back: function() {}
+    back: function() {},
+    show:function(){
+        this.popupVisible = true;
+    },
+    exchange:function(){
+      this.popupVisible = true;
+    }
+    
   }
 })

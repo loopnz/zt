@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 const path = require("path");
 const webpack = require("webpack");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+=======
+const path = require('path')
+const webpack = require('webpack')
+const SentryWebpackPlugin = require('@sentry/webpack-plugin')
+const SentryPlugin = require('webpack-sentry-plugin')
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+>>>>>>> b6c488a916f936384331143bc6fb76fa658d185f
 /*
  * SplitChunksPlugin is enabled by default and replaced
  * deprecated CommonsChunkPlugin. It automatically identifies modules which
@@ -55,6 +64,10 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns:['zt/*']
+    }),
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
@@ -121,7 +134,16 @@ module.exports = {
             ]
           ]
         }
-      }
+      },
+      {
+        test:/\.(jpg|png|gif)$/,
+        use:[{
+                loader:"url-loader",
+                options:{
+                    limit:10000
+                }
+            }]
+    }
     ]
   },
 

@@ -22,7 +22,13 @@
   box-sizing: border-box;
 }
 
+.ignore-root{
+  padding-top: 40px;
+}
+
+
 .pointHistory {
+  background: #fff;
   .mint-header {
     background: #fff;
     color: #666;
@@ -30,32 +36,44 @@
   .pointHistory-swipe {
     height: 690px;
     background: #fbfbfb;
-
+    overflow: hidden;
     .pointHistoryUl {
       display: flex;
       height: 100%;
-      width: 5148px;
+      width: 2964px;
       .pointHistoryLi {
         width: 143px;
         display: flex;
         box-sizing: border-box;
-        padding-top: 45px;
+        padding-top: 23px;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         height: 100%;
         border-right: 0.5px solid #f7f7f7;
       }
+      .time{
+        line-height: 48px;
+        font-size: 32px;
+        color: #bcbcbc;
+      }
       .pointHistoryLi.today {
-        background: #edfde8;
+        background: #e5f7e4;
+
+        .time{
+          color: #45a000;
+        }
+        .bottom-num{
+          color: #45a000;
+        }
       }
       .bottom-num {
         text-align: center;
         color: #999;
-        font-size: 20px;
+        font-size: 24px;
       }
       .bottom-bar {
-        background: #73f150;
+        background: #6db43a;
         width: 97px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
@@ -69,17 +87,28 @@
     padding: 0 51px;
     box-sizing: border-box;
     margin-top: 50px;
+    color: #009241;
+    .title-left{
+      font-size: 34px;
+      span{
+        font-size: 52px;
+      }
+    }
+    .title-right{
+     font-size: 28px; 
+    }
   }
   .pointHistory-list {
     box-sizing: border-box;
-    margin: 0 51px;
+    padding: 0 51px;
     margin-top: 40px;
     position: relative;
+    overflow: hidden;
     .list-sideLine {
       position: absolute;
       height: 100%;
       width: 1px;
-      left: 10px;
+      left: 61px;
       top: 15px;
       background: #f1f4f4;
     }
@@ -97,24 +126,29 @@
         display: flex;
         height: 30px;
         align-items: center;
-        font-size: 30px;
+        font-size: 32px;
         color: #666;
+        line-height: 1.2;
+      }
+      .item-itme{
+        color: #c0c7ca;
       }
       .item-bottom {
         box-sizing: border-box;
         display: flex;
         justify-content: space-between;
         padding-left: 51px;
-        font-size: 40px;
+        font-size: 42px;
         line-height: 1;
+        color: #333;
         margin-top: 30px;
         .item-point {
-          font-size: 36px;
+          font-size: 38px;
           color: #53ab3a;
         }
         .point {
           color: #53ab3a;
-          font-size: 48px;
+          font-size: 52px;
         }
       }
     }
