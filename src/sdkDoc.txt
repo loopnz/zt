@@ -1,0 +1,25 @@
+1、在需要获取积分的页面添加learnpointSDK.js，添加后有个全局对象Learnpoint
+2、初始化 
+如果是当前页面是视频页面，Learnpoint.init(refId,pageType); refId 是当前视频id,pageType的值'video'
+如果是当前页面是文章页面，Learnpoint.init(refId,pageType); refId 是当前文章id,pageType的值'article'
+如果是其他页面 Learnpoint.init();
+3、获取积分操作
+Learnpoint.emit("answerQuestion") 回答问题
+Learnpoint.emit("sub")  订阅
+Learnpoint.emit("fav")  收藏
+Learnpoint.emit("share") 分享
+Learnpoint.emit("publish") 发布评论
+Learnpoint.emit("setQuestion",userid)  审核用户发布的题目，userid是被审核用户的id
+Learnpoint.emit("guide") 新手引导
+Learnpoint.emit("visit") 访问
+Learnpoint.emit("login") 登录
+Learnpoint.emit("readArticle") 当阅读完一篇文章
+Learnpoint.emit("readVideo") 当看完一个视频 
+Learnpoint.emit("videoStart") 视频开始播放时
+Learnpoint.emit("videoStop") 视频暂停时
+
+4、由于初始化时 需要去获取 用户积分规则，如果需要在页面加载时就调用 获取积分操作，则需要监听ready事件，例:
+登录成功跳转到首页后需要获取登录积分,则使用下面代码
+Learnpoint.on("ready",function(){
+	Learnpoint.emit("login")
+})

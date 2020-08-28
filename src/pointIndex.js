@@ -2,8 +2,12 @@ import './styles/index.scss'
 import Vue from 'vue'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import VueMeta from 'vue-meta'
 Vue.use(MintUI)
-
+Vue.use(VueMeta, {
+  // optional pluginOptions
+  refreshOnceOnNavigation: true
+})
 Vue.component('point-term', {
   props: {
     item: Object
@@ -22,6 +26,9 @@ Vue.component('point-term', {
 var app = new Vue({
   el: '#app',
   template: '#pageTpl',
+  metaInfo: {
+    title: '学习积分首页'
+  },
   data: {
     terms: [
       {
